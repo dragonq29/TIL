@@ -208,4 +208,21 @@
 
 * Tail (마지막 20줄을 실시간으로 계속 보여줌)
   ```tail -f -n 20 /var/log/messages```
+  
+* crul로 파일 받기(url.txt 받기)
+  
+  ```curl -O https://url.com/url.txt```
+  
+  
+  
+  ## 예제 중심 설명
+  
+  * curl -sL \    https://deb.nodesource.com/setup_6.x \    | sudo -E bash -
+    * curl -sL : 정숙 모드. 진행 내역이나 메시지등을 출력하지 않습니다. 리다이렉션이 있을 경우 따라감
+    * sudo -E bash - : 모르겠음
+  * sed -i -e 's/8080/80/g' server.js
+    * Server.js 파일의 8080
+      * -i : 변경되는 값을 실제로 파일에 저장하는 옵션
+      * -e : sed를 사용하였을 때 출력되는 값을 보여줌
+      * /g :단지 첫번째의 것만이 아니라 라인의 모든 부합 패턴 대체가 적용 되게 한다
 
