@@ -42,6 +42,7 @@
   
 * 루트에서부터, 즉 전체 하드에서, pl 확장자를 가진 모든 파일 찾기
   ```find / -name '*.pl'```
+  
 * 전체 하드 디스크에서, 파일명이 ab 로 시작하는 모든 파일 찾기
 
   find / -name 'ab*'
@@ -216,8 +217,16 @@
   
   ```curl -O https://url.com/url.txt```
   
+* 열린 포트 확인
+
+  ```sudo firewall-cmd --zone=public --list-all```
+
   
+
   
+
+  
+
   ## 예제 중심 설명
   
   * curl -sL \    https://deb.nodesource.com/setup_6.x \    | sudo -E bash -
