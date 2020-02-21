@@ -189,7 +189,6 @@
             - sudo mount [해당 폴더 경로]
     - 연결이 안될때 확인 해볼 사항
       - Samba 버전이 안맞을 수 있음. 세팅 멘 뒤에 vers=2.1이나 vers=1.0 등을 추가해 볼것
-      - mount가 안될때 sudo yum install -y cifs-utils 해서 cifs 클라이언트를 설치할것
   
 * 서버간 파일 전송
   ```scp -r [src폴더명] [des IP]:/[des폴더명]```
