@@ -217,16 +217,17 @@
   
   ```curl -O https://url.com/url.txt```
   
-* 열린 포트 확인
+* 방화벽 관련
 
-  ```sudo firewall-cmd --zone=public --list-all```
-
+  ```
+firewall-cmd --zone=public --list-all	// 열린 포트 확인
+  firewall-cmd --permanent --zone=public --add-service=http	// http 서비스 추가
+firewall-cmd --permanent --zone=public --add-port=5563/tcp	//5563 포트 추가
+  firewall-cmd --permanent --zone=public --remove-service=http	// http 서비스 삭제
+firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
+  firewall-cmd --reload	// 수정 내역 적용
+```
   
-
-  
-
-  
-
   ## 예제 중심 설명
   
   * curl -sL \    https://deb.nodesource.com/setup_6.x \    | sudo -E bash -
