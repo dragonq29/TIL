@@ -42,6 +42,7 @@
   
 * 루트에서부터, 즉 전체 하드에서, pl 확장자를 가진 모든 파일 찾기
   ```find / -name '*.pl'```
+  
 * 전체 하드 디스크에서, 파일명이 ab 로 시작하는 모든 파일 찾기
 
   find / -name 'ab*'
@@ -189,6 +190,7 @@
             - sudo mount [해당 폴더 경로]
     - 연결이 안될때 확인 해볼 사항
       - Samba 버전이 안맞을 수 있음. 세팅 멘 뒤에 vers=2.1이나 vers=1.0 등을 추가해 볼것
+      - mount가 안될때 sudo yum install -y cifs-utils 해서 cifs 클라이언트를 설치할것
   
 * 서버간 파일 전송
   ```scp -r [src폴더명] [des IP]:/[des폴더명]```
@@ -215,7 +217,16 @@
   
   ```curl -O https://url.com/url.txt```
   
-  
+* 방화벽 관련
+
+  ```
+firewall-cmd --zone=public --list-all	// 열린 포트 확인
+  firewall-cmd --permanent --zone=public --add-service=http	// http 서비스 추가
+firewall-cmd --permanent --zone=public --add-port=5563/tcp	//5563 포트 추가
+  firewall-cmd --permanent --zone=public --remove-service=http	// http 서비스 삭제
+firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
+  firewall-cmd --reload	// 수정 내역 적용
+```
   
 * 네트워크 설정 보기 (게이트웨이 등등)
 
