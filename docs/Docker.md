@@ -1,0 +1,26 @@
+## Docker 명령어
+
+- docker ps
+- docker ps -a
+  - 중지된 컨테이너 까지 보임. -a 안붙이면 안보임
+- docker images
+  - 다운 받은 이미지 확인
+- docker pull <IMAGE_NAME[:latest] or IMAGE_NAME:TAG>
+- diff
+  - 이미지 간의 차이를 알아볼 때 쓰는 명령어
+- docker start CONTAINER
+- docker restart CONTAINER
+- docker attach CONTAINER
+  - 가동중인 컨테이너에 접속
+  - 꼭!! 명령 후 엔터를 쳐야 셀이 실행됨.
+- docker logs [OPTIONS] CONTAINER
+  - ex: docker logs -f --tail=5 CONTAINER
+    - 최근 로그 5개만 계속 모니터링
+- docker exec -it 2e6a6e4f9f2 /bin/bash
+  - Docker container에 접속 방법
+- docker cp /path/foo.txt mycontainer:/path/foo.txt
+  - 호스트에서 컨테이너로 파일 전송하는 방법
+- docker cp mycontainer:/path/foo.txt /path/foo.txt
+  - 컨테이너에서 호스트로 파일 전송하는 방법
+- docker info
+  - 공식 저장소의 주소 확인
