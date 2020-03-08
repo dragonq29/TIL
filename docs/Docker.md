@@ -35,10 +35,13 @@
   - 새로운 컨테이너 생성
     * -i : interactive
     * -t : tty
-    * -name : 컨테이너 이름 지정 (현재 ubuntu01)
+    * --name : 컨테이너 이름 지정 (현재 ubuntu01)
     * /bin/bash : 해당 컨테이너의 bash shell실행 (exit하면 컨테이너도 stop 됨)
     * -d : detached mode(백그라운드모드)
     * -p : 컨테이너 포트와 호스트 포트 연결 (1234:5678 호스트의 1234포트를 컨테이너의 5678에 연결)
+    * -rm : 종료시 컨테이너 자동 제거
+    * -e :컨테이너 내부 환경 변수 설정
+    * 등등
 
 - docker start CONTAINER
 
