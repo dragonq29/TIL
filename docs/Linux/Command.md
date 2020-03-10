@@ -274,8 +274,26 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
   ```
 ```
   
-  ## 예제 중심 설명
+* 네트워크 설정 보기 (게이트웨이 등등)
+
+  '''/etc/sysconfig/network-scripts/[네트워크명]'''
+
   
+
+* NTP 설정
+
+  * NTP 확인
+    * ``` ntpq -p ```
+  * NTP 실행
+    * ``` vi /etc/ntp.conf ```
+      * server 로 시작하는 것들 #으로 주석처리 하고 아래의 문자열 넣기
+      * ``` server [ip] iburst``` (iburst가 없으면 10분 이상 차이날때만 동기화됨)
+    * ``` sudo service ntpd start ```
+
+  
+
+  ## 예제 중심 설명
+
   * curl -sL \    https://deb.nodesource.com/setup_6.x \    | sudo -E bash -
     * curl -sL : 정숙 모드. 진행 내역이나 메시지등을 출력하지 않습니다. 리다이렉션이 있을 경우 따라감
     * sudo -E bash - : 모르겠음
