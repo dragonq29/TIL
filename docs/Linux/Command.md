@@ -166,14 +166,59 @@
 
     * 수정 후 sudo service smbd restart 또는 sudo systemctl restart smb
 
-  * 공유 폴더 마운트 확인
+  * 공유 폴더 마운트 확인 (Client 입장)
 
     - ```
       df -a
       ```
 
-  * 공유 폴더 마운트 연결
+  * 특정 서버의 열린 공유 폴더 확인
 
+    ``` 
+    dragonq@localhost:~$ smbclient -L [IP]
+    Domain=[MYGROUP] OS=[Windows 6.1] Server=[Samba 4.8.3]
+            Sharename       Type      Comment
+            ---------       ----      -------
+            CIFSTEST        Disk
+            TestData        Disk
+            IPC$            IPC       IPC Service (Samba Server Version 4.8.3)
+            go             Disk      Home Directories
+    Domain=[MYGROUP] OS=[Windows 6.1] Server=[Samba 4.8.3]
+            Server               Comment
+            ---------            -------
+            GO2                 Samba Server Version 4.8.3
+            Workgroup            Master
+            ---------            -------
+            MYGROUP              GO2
+            WORKGROUP            DESKTOP-QSEQ327
+    ```
+    
+    ADMIN$, C$, IPC$, 이처럼 폴더 이름 뒤에 ‘$’가 붙은 공유 자원은 숨은 공유(또는 관리 공유)라고 하며 실제 공유 폴더 외에는 윈도 사용자에게 보이지 않음
+    
+    주로 관리자가 공유 자원을 관리하기 위한 목적으로 사용되며 윈도 시스템이 부팅할 때 자동으로 공유
+    
+    ADMIN$은 윈도 시스템 폴더인 C:\WINDOWS를, C$는 루트 폴더인 C:\를 의미
+    
+    IPC$는 자원 공유에 필요한 세션 연결, 사용자 인증을 처리하기 위한 공유 자원임
+    
+  * SmbClient 사용
+  
+    ``` 
+    dragonq@localhost:~$ smbclient //192.168.30.80/sharedFolder
+    Enter dragonq's password:
+    Domain=[DD] OS=[Windows 10] Server=[Windows 10]
+    smb: \> ls
+      .                                   DR      0 Mon Apr 22 03:21:33 2015
+      ..                                  DR      0 Mon Apr 22 03:21:33 2015
+      XXXX.dat                            HS     75 Mon Apr 22 02:21:32 2015
+      YYYY.dat                            A         Tue Jul 13 13:42:25 2019
+           41097 blocks of size 1043576. 40116 blocks available
+    ```
+  
+    
+  
+  * 공유 폴더 마운트 연결
+  
     - 방법 1 (임시로 설정 방법)
       - ~~sudo mount -t cifs //[타겟IP]/storage /mnt/storage -o username=[타겟ID],password=[타겟비밀번호]~~
         - 마운트된 폴더 권한 확인 해보면 root라서 non-root로는 쓸수 없을 것이다.
@@ -226,6 +271,7 @@ firewall-cmd --permanent --zone=public --add-port=5563/tcp	//5563 포트 추가
   firewall-cmd --permanent --zone=public --remove-service=http	// http 서비스 삭제
 firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
   firewall-cmd --reload	// 수정 내역 적용
+  ```
 ```
   
 * 네트워크 설정 보기 (게이트웨이 등등)
@@ -261,3 +307,5 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
   * cat aaa bbb > ccc
     * aaa파일과 bbb파일을 합쳐서 ccc 파일로 저장
 
+
+```
