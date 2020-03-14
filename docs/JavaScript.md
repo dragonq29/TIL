@@ -120,6 +120,23 @@
 
 객체 선언시 =와 :의 차이점을 모르겠음 (언제 언제 쓰는건지)
 
+* 변수 선언시 "="
+
+* 변수 내부 항목 선언 및 값 정의시 ":"
+
+* 참고
+
+  * ```
+    > var obj = {
+        "str": "문자열",
+        "num": 3.14,
+        "boolean": true,
+        "null": null,
+        "undefined": undefined,
+        "method": function a( ) {console.log("method") }
+    }
+    ```
+
 ----------
 
 ##CSS
@@ -192,6 +209,7 @@
 ##HTML, CSS, JavaScript 관계
 
 * JavaScript의 가장 바깥에서 this는 window임 (window는 생략 됨)
+  
   * var a =1 하고나서 window.a 하면 1임
 * window 내부 요소들 몇가지
   * window.location: 현재 브라우저의 주소
@@ -225,46 +243,46 @@
 
       여기서 값, 텍스트 변경 및 CSS 변경도 가능함
 
-    * p 태그 같이 src에 접근 불가능한 것들은 getAttribute('src')를 이용하면 됨
+  * p 태그 같이 src에 접근 불가능한 것들은 getAttribute('src')를 이용하면 됨
 
-      ```
-      > t;
-      < ▶<p id="lyricist" style="color: blue; font-size: 15pt;" src="test"><i>hello</i></p>
-      > t.src;
-      < undefined
-      > t.getAttribute("src");
-      < "test"
+    ```
+    > t;
+    < ▶<p id="lyricist" style="color: blue; font-size: 15pt;" src="test"><i>hello</i></p>
+    > t.src;
+    < undefined
+    > t.getAttribute("src");
+    < "test"
+    
+    // 값 바꿀때
+    t.setAttribute("src","test2");
+    ```
+
+  * 조건에 맞는 엘리먼트 가져오는 법
+
+    * ```
+      document.getElementsByTagName("p");
+      document.getElementsByClassName("lyric");
+      document.getElementsByName("author"); // input태그 반환
       
-      // 값 바꿀때
-      t.setAttribute("src","test2");
+      var a = document.getElementsByTagName("p");
+      a[0] // 배열 형태로 접근 가능
       ```
 
-    * 조건에 맞는 엘리먼트 가져오는 법
+    * querySelector 이용해서(CSS 선택자 기반) 가져오는 법 (입력 파라미터 종류)
 
-      * ```
-        document.getElementsByTagName("p");
-        document.getElementsByClassName("lyric");
-        document.getElementsByName("author"); // input태그 반환
-        
-        var a = document.getElementsByTagName("p");
-        a[0] // 배열 형태로 접근 가능
-        ```
+      * \#idddd : idddd로 검색
+      * taggggg : 그냥 적으면 태그 종류로 검색
+      * .classss : 클래스 이름이 classss인 엘리먼트 검색
+      * 기타
+        * 대괄호([ ])를 이용해서 속성에 대한 필터를 넣을 수 있음
+        * 오른쪽 꺾쇠( >)를 이용해서 자식(child) 중에서 검색할 수 있음
+        * 쉼표(,)를 이용해서 엘리먼트를 여러 개 선택할 수 있음
 
-      * querySelector 이용해서(CSS 선택자 기반) 가져오는 법 (입력 파라미터 종류)
-
-        * \#idddd : idddd로 검색
-        * taggggg : 그냥 적으면 태그 종류로 검색
-        * .classss : 클래스 이름이 classss인 엘리먼트 검색
-        * 기타
-          * 대괄호([ ])를 이용해서 속성에 대한 필터를 넣을 수 있음
-          * 오른쪽 꺾쇠( >)를 이용해서 자식(child) 중에서 검색할 수 있음
-          * 쉼표(,)를 이용해서 엘리먼트를 여러 개 선택할 수 있음
-
-        ```
-        document.querySelector("#songwriter");	// id songwriter로 1개 엘리먼트 가져옴
-        document.querySelectorAll("#songwriter") // id songwriter로 여러개(배열) 엘리먼트 가져옴
-        document.querySelectorAll("h1, h2") // 쉼표로 여러 조건 넣을 수 있음
-        ```
+      ```
+      document.querySelector("#songwriter");	// id songwriter로 1개 엘리먼트 가져옴
+      document.querySelectorAll("#songwriter") // id songwriter로 여러개(배열) 엘리먼트 가져옴
+      document.querySelectorAll("h1, h2") // 쉼표로 여러 조건 넣을 수 있음
+      ```
 
     * 엘리먼트 추가 복제 삭제
 
@@ -279,14 +297,140 @@
       document.body.appendChild(hr);	// 생성한 엘리먼트를 적용 : body의 마지막 엘리먼트로 추가
       ```
 
-    * 콜백 함수
+* 콜백 함수
 
-      * ```
-        setTimeout(함수, 3000);	// 3초 뒤에 함수 콜
-        setInterval(함수, 5000); // 5초마다 함수 콜 (리턴으로 인터벌ID 나옴)
-        clearTimeout(); // 타임아웃 취소 (타임아웃 전에만 사용 가능)
-        clearInterval(인터벌ID); // 인터벌 취소 (인터벌ID 넣어야함)
-        ```
+  * ```
+    setTimeout(함수, 3000);	// 3초 뒤에 함수 콜
+    setInterval(함수, 5000); // 5초마다 함수 콜 (리턴으로 인터벌ID 나옴)
+    clearTimeout(); // 타임아웃 취소 (타임아웃 전에만 사용 가능)
+    clearInterval(인터벌ID); // 인터벌 취소 (인터벌ID 넣어야함)
+    ```
 
-      * 
+* 이벤트 종류
 
+  * 폼 이벤트(Form Event): HTML 문서의 폼 엘리먼트에 변화가 생겼거나 제출(submit) 버튼 등이 눌렸을 때 발생하는 이벤트
+  * 윈도 이벤트(Window Event): 페이지가 모두 로드되었을 때 발생하는 이벤트로 onload event가 대표적
+  * 마우스 이벤트(Mouse Event): 사용자가 마우스를 조작했을 때 발생하는 이벤트
+  * 키 이벤트(Key Event): 사용자가 키보드를 조작했을 때 발생하는 이벤트
+
+* HTML 태그 속성에 이벤트 핸들러 등록 방법 (예시는 onclick, onchange, onkeydown의 사용을 보여줌)
+
+  * ```
+    <h1 onclick = "console.log('clicked');"> HTML 태그 속성에 이벤트 핸들러 추가하기 </h1>
+    <input type = "text" onchange = "console.log('changed');" onkeydown = "console.log('typed');">
+    ```
+
+* 자바스크립트 코드에서 DOM 엘리먼트 속성에 직접 핸들러 등록 방법 (HTML 태그 속성에 이벤트 핸들러를 등록하는 것이 아님
+
+  * 방법 1: t.onsubmit = function a() ~~ 처럼 메소드에 바로 연결하는 방법 (앞에 정의 된 것이 있으면 덮어 써버림)
+  * 방법 2: addEventListener를 이용하여 붙이는 방법 (다른 이벤트 핸들러를 덮어쓰지 않으므로 이벤트 핸들러를 여러 개 추가할 때 쓸 수 있음)
+    * removeEventListener로 삭제 가능
+
+* ```
+  <form method = "GET" action = "b.html" id = "form1" onsubmit = "console.log('form tag'); return false;">
+      이름 : <input type = "text" name = "id"><br>
+      메시지 : <input type = "text" name = "msg"><br>
+      <input type = "submit">
+  </form>
+  <script>
+      var t = document.getElementById("form1");
+      t.onsubmit = function a( ) {
+          console.log("from property");
+          return false;
+      } // 위에 console.log('form tag')이 있음에도 console.log("from property")이 실행됨
+      
+      function b( ) {
+          console.log("from addEventListener");
+          return false;
+      }
+      t.addEventListener("submit", b);
+  </script>	
+  
+  ```
+
+* 예제) 이름과 메세지를 작성한 다음 제출 버튼을 누르면 아이디와 메시지 정보가 GET 메서드를 통해 blhtml로 전달되는 코드
+
+  * Form 태그
+    * form 태그는 사용자 입력을 수집하는 데 사용되는 양식을 정의하고, HTML에서 다른 페이지(서버)에 정보를 보낼 때 사용
+    * form 태그는 text, checkbox, submit 등과 같은 <input>요소를 포함하고, textarea, select 등과 같은 Form elements들도 포함
+
+  ```
+  <html>
+      <head>
+          <meta charset = "utf-8">
+      </head>
+      <body>
+          <form method = "GET" action = "b.html" id = "form1">
+              이름 : <input type = "text" name = "id"><br>
+              메시지 : <input type = "text" name = "msg"><br>
+              <input type = "submit">		// type이 submit이면 제출 버튼이 생기고, 누르면 해당 form에 name이 있는 input태그들을 action 타겟으로 전달
+          </form>
+      </body>
+  <html>
+  ```
+
+------
+
+###Ajax (Asynchronous Javascript and XML)
+
+브라우저에서 페이지를 이동하지 않고 자바스크립트를 통해 HTTP 요청을 보낸 후 그 응답을 받아 처리할 수 있는 기술(비동기로 처리됨)
+
+* 간단한 예제
+  * 여기서 req.readyState 값 설명
+    * 0: open( ) 메서드가 호출되기 전
+    * 1: open( ) 메서드가 호출된 후
+    * 2: 보낸 요청에 대해 응답에 헤더가 수신된 후
+    * 3: 응답 메시지에 body 부분이 수신 중일 때
+    * 4: 모든 응답이 완료되었을 때
+  * 참고
+    * this(XMLHttpRequest).status 값 설명
+      * 200: Okay, 클라이언트의 요청이 올바르게 처리되어 정상으로 응답했을 때
+      * 403: Forbidden, 클라이언트의 요청이 권한 문제로 인해 거절되었을 때
+      * 404: Not found, 클라이언트가 요청한 자료가 서버에 없을 때
+      * 500: Internal Server Error, 기타 이유로 서버에서 오류가 발생해 정상으로 응답할 수 없을 때
+
+```
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <script>
+            var req = new XMLHttpRequest( );
+            req.open("GET", "[원격 데이터 위치]");
+            req.onreadystatechange = function a( ) {	// req.readyState의 변화에 따른 핸들러 추가
+    					console.log(this.readyState, this.status);
+						    if (this.readyState == 4 && this.status == 200) {
+					        console.log(this.response);
+    						}
+            	}
+            req.send( );
+        </script>
+    </head>
+    <body>
+        AJAX
+    </body>
+</html>
+```
+
+-----
+
+### JSON (Javascript Object Notification)
+
+자바스크립트의 객체를 문자열로 표현하는 방법
+
+#### !!!!주의!!! 값이 undefined인 변수나, 함수를 값으로 가진 변수는 파싱 되지 않음
+
+* 기본 사용법
+
+* ```
+  > var pi = 3.14;
+  < undefined
+  > JSON.stringify(pi);
+  < "3.14"
+  > JSON.parse("3.14");
+  < 3.14
+  ```
+
+
+
+
+https://thebook.io/006894/part02/ch15/ 부터 볼것
