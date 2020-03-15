@@ -431,6 +431,13 @@
   ```
 
 
+-----
+
+##번외
+
+* HTML엘리먼트를 자바스크립트가 사용하려면, 1 쓰레드가 도는 자바스크립트 특성상 사용하려는 HTML엘리먼트가 나온 코드 이후에 사용하는 자바스크립트 코드가 나와야함. (document.onload나 최근에는 async 또는 defer속성을 추가하여 문제를 해결할 수도 있음)
+* 자바스크립트도 try-catch 쓸수 있음. 대신 Exception은 throw "error" 처럼, 일반적으로 쓰는건 따로 없고 스트링을 날리는 것임
 
 
-https://thebook.io/006894/part02/ch15/ 부터 볼것
+
+참고 : https://thebook.io/006894/
