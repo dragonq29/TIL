@@ -1,3 +1,7 @@
+
+
+
+
 ## 리눅스 명령어
 
 * 현재 존재하지 않은 디렉토리의 하위디렉토리까지 생성
@@ -271,6 +275,7 @@ firewall-cmd --zone=public --list-all	// 열린 포트 확인
 firewall-cmd --permanent --zone=public --add-port=5563/tcp	//5563 포트 추가
   firewall-cmd --permanent --zone=public --remove-service=http	// http 서비스 삭제
 firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
+  firewall-cmd --permanent --zone=public --add-service=samba // 윈도우에서 리눅스 저장소 보려면 필요
   firewall-cmd --reload	// 수정 내역 적용
   ```
 ```
@@ -308,5 +313,34 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
   * cat aaa bbb > ccc
     * aaa파일과 bbb파일을 합쳐서 ccc 파일로 저장
 
-
 ```
+* 로그 디버깅
+  
+* tail -v
+  
+* CentOS GUI 버전을 시작시 CMD 버전으로 설정 방법
+
+  ```
+  systemctl get-default // 현재 상태 확인
+  systemctl set-default multi-user.target // CMD 버전으로 세팅 (GUI 버전은 graphical.target)
+  reboot
+  ```
+
+  
+
+* CentOS에서 NVIDIA 드라이버 설치법
+
+  https://www.cyberciti.biz/faq/how-to-install-nvidia-driver-on-centos-7-linux/
+
+  [https://linux.systemv.pe.kr/nvidia-driver-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/](https://linux.systemv.pe.kr/nvidia-driver-설치하기/)]
+
+* 여러파일 확장자 한방에 변경
+  
+  ``` 
+  for f in *.예전확장자; do mv -- "$f" "${f%.예전확장자}.새확장자"; done
+  ```
+  
+  
+  
+  
+  
