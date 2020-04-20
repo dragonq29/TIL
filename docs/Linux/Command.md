@@ -340,7 +340,15 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
   for f in *.예전확장자; do mv -- "$f" "${f%.예전확장자}.새확장자"; done
   ```
   
+* 여러 파일의 내용 한번에 replace
+
+  ```
+  find -name <찾을 파일명> -exec perl -p -i -e 's/<바꿔야할문자>/<바꾼문자>/g' {} \;
+  예) find . -name "*.hdr" -exec perl -pi -e 's/STAT=SC/STAT=KC/g' {} \;
+  ```
+
   
+
   
-  
+
   
