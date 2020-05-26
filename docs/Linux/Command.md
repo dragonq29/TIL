@@ -316,7 +316,7 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
 ```
 * 로그 디버깅
   
-* tail -v
+  * tail -v
   
 * CentOS GUI 버전을 시작시 CMD 버전으로 설정 방법
 
@@ -349,6 +349,38 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
 
   
 
+* 시스템 상태 정보 분석
+
+  ```bash
+  #!/bin/bash
+  MEMORY=$(free -m | awk 'NR==2{printf "%.2f%%\t\t", $3*1100/$2}')
+  DISK=$(df -h | awk '$NF=="/"{printf "%s\t\t", $5}')
+  CPU=$(top -bn1 | grep load | awk '{printf "%.2f%%\t\t\n", $(NF-2)}')}
+  
+  LOG_DIR=/storage/TEST_LOG
+  mkdir -p $LOG_DIR
+  
+  while [ true ]; do
+  	DATE_STR=$(date +"%Y-%m-%d")
+  	FILENAME=$DATE_STR.log
+  	TIME_NOW=$(date +"%Y-%m-%d_%H:%M:%S")
+  	echo "$TIME_NOW Memory: $MEMORY DISK: $DISK CPU: $CPU" >> $LOG_DIR/$FILENAME
+  	sleep 1
+  done
+  ```
+
+* 백그라운드 실행 파일
+  ```bash
+  #!/bin/bash
+  nohup ./파일명.sh 1>/dev/null 2>&1 &
+  ```
   
 
-  
+* top 사용법
+
+  ```
+  top -d 1
+  ```
+
+  * Shift + f : 필터 걸 수 있는 화면 열기
+    * 필터 걸고 싶은 항목에서 's' 누르면 제일 상단 오른쪽 쯤에 필터가 걸린 것을 볼수 있음. 필터 걸고 'q' 눌러서 top 화면 돌아감
