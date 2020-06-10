@@ -375,7 +375,6 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
   nohup ./파일명.sh 1>/dev/null 2>&1 &
   ```
   
-
 * top 사용법
 
   ```
@@ -384,3 +383,28 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
 
   * Shift + f : 필터 걸 수 있는 화면 열기
     * 필터 걸고 싶은 항목에서 's' 누르면 제일 상단 오른쪽 쯤에 필터가 걸린 것을 볼수 있음. 필터 걸고 'q' 눌러서 top 화면 돌아감
+  
+* CentOS 런레벨 바꾸기
+
+  ```
+  Runlevel 3은 multi-user.target
+  Runlevel 5는 graphical.target
+  
+  기본 런레벨을 3/5레벨로 바꾸려면 다음 명령어를 입력
+  systemctl set-default multi-user.target;
+  systemctl set-default graphical.target;
+  
+  5레벨에서 3레벨로 바꾸려면 다음 명령어를 입력
+  systemctl isolate multi-user.target;
+  
+  3레벨에서 5레벨로 바꾸려면 다음 명령어를 입력
+  systemctl isolate graphical.target;
+  
+  ```
+
+  
+
+* nc 명령 (NetCat)
+
+  * Linux, “nc” 명령을 통해 “Process”에서 장비로 Port 3075로 접속 확인
+    * 예시 - “nc 127.x.x.x 3075”
