@@ -308,7 +308,7 @@ firewall-cmd --permanent --zone=public --remove-port=80/tcp	// 80 포트 삭제
       * -i : 변경되는 값을 실제로 파일에 저장하는 옵션
       * -e : sed를 사용하였을 때 출력되는 값을 보여줌
       * /g :단지 첫번째의 것만이 아니라 라인의 모든 부합 패턴 대체가 적용 되게 한다
-  * grep -r "aaa" ./\*
+  * grep -r "aaa" ./*
     * ./(현재 폴더 아래 모든 파일에서) aaa라는 문자열이 있는지 찾기. 하위 디렉토리 모두에서(-r)
   * cat aaa bbb > ccc
     * aaa파일과 bbb파일을 합쳐서 ccc 파일로 저장
