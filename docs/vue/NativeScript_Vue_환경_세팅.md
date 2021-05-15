@@ -35,6 +35,9 @@ https://nativescript-vue.org/en/docs/getting-started/quick-start/
 2. cd <project-name>
 3. npm install
 4. <Android Studio의 Android Emul 실행 or Android 실기기 Debug모드로 USB 연결>
+	- (아래의 "Android Emul. 실행 스크립트 추가" 내용을 package.json에 추가 저장 후)
+	- npm run avd-list (목록에 표시되는 avd 이름을 Ctrl+C)
+	- npm run avd-start <avd 이름>
 5. ns run
 ```
 
