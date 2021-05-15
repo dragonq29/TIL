@@ -38,7 +38,7 @@ https://nativescript-vue.org/en/docs/getting-started/quick-start/
 5. ns run
 ```
 
-* (참고) [vue-cli-template](https://github.com/nativescript-vue/vue-cli-template)를 이용하는 방법도 있지만 [vue-cli-template](https://github.com/nativescript-vue/vue-cli-template)가 최신 Vue CLI 버전 적용 안되서 비추
+* (참고) [vue-cli-template](https://github.com/nativescript-vue/vue-cli-template)를 이용하는 방법도 있지만 [vue-cli-template](https://github.com/nativescript-vue/vue-cli-template)가 최신 Vue CLI 버전 적용 안돼서 비추
   
   * [vue-cli-template](https://github.com/nativescript-vue/vue-cli-template)가 Vue CLI 2.x까지만 지원해서(지금 Vue CLI 4.x임) 안쓰는게 좋을 듯...
   
