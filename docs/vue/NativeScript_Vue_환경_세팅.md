@@ -71,3 +71,11 @@ https://nativescript-vue.org/en/docs/getting-started/quick-start/
 ### 기본 앱 실행 화면
 
 ![image-20210515141544256](NativeScript_Vue_%ED%99%98%EA%B2%BD_%EC%84%B8%ED%8C%85.assets/image-20210515141544256.png)
+
+
+
+### 앱 배포 방법 (Google Play/App Store)
+
+참고:
+https://docs.nativescript.org/releasing.html
+
